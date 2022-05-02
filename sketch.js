@@ -9,6 +9,8 @@ var x2;
 var scrollSpeed = 30;
 let gameState = 'title';
 
+//hello
+
 function preload() {
   mytupi = loadFont('font/mytupiBOLD.ttf');
   menu = loadImage('images/menu.png');
