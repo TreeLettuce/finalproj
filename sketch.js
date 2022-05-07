@@ -14,6 +14,7 @@ let gameState = 'title';
 function preload() {
   mytupi = loadFont('font/mytupiBOLD.ttf');
   menu = loadImage('images/menu.png');
+  selection = loadImage('images/selection.png');
   ggscreen = loadImage('images/gg.png');
   movingRoad = loadImage('images/road.png')
   traffic01 = loadImage('images/traffic01.png');
@@ -56,8 +57,14 @@ function draw() {
     case 'title':
       titleScreen();
       break;
-    case 'game':
-      gameStage();
+    case 'selection':
+      selectionScreen();
+      break;
+    case 'game1':
+      gameStage1();
+      break;
+    case 'game2':
+      gameStage2();
       break;
     case 'gameover':
       gameOver();
@@ -66,14 +73,23 @@ function draw() {
 }
 
 function keyReleased() {
-  if (gameState === 'title' || gameState === 'gameover') {
-    if (key === 'x' || key === 'X') {
-      gameState = 'game';
+  if (gameState === 'selection') {
+    if (key === 'q' || key === 'Q') {
+      gameState = 'game1';
+      car.position.x = 680;
+      car.position.y = 483;
+      score = 0;
+    } else if (key === 'e' || key === 'E') {
+      gameState = 'game2';
       car.position.x = 680;
       car.position.y = 483;
       score = 0;
     }
-  }
+} else if (gameState === 'title' || gameState === 'gameover' ){
+if (key === 'x' || key === 'X'){
+gameState = 'selection';
+    }
+}
 }
 
 function titleScreen() {
@@ -88,9 +104,14 @@ function titleScreen() {
   text('PRESS "X" TO START GAME', width / 2, height / 2.35);
 }
 
-function gameStage() {
+function selectionScreen() {
+  background(220);
+  image(selection, 0, 0, 0, 0,);
+}
+
+function gameStage1() {
   roadMoving();
-  score = score + Math.round(getFrameRate() / 60);
+  score = score + 1;
 
   //movement + turning animation
   if (keyDown('w')) {
@@ -134,6 +155,54 @@ function gameStage() {
   wallTop.debug = mouseIsPressed;
   wallBottom.debug = mouseIsPressed;
 
+}
+
+function gameStage2() {
+
+  roadMoving();
+  score = score + 1;
+
+  //movement + turning animation
+  if (keyDown('w')) {
+    car.position.y = car.position.y - 10.5;
+    car.changeAnimation('turnL');
+  } else if (keyDown('s')) {
+    car.position.y = car.position.y + 10.5;
+    car.changeAnimation('turnR');
+  } else {
+    car.changeAnimation('driving')
+  }
+
+  //draws all sprites
+  drawSprites();
+
+  //side barrier death
+  if (car.overlap(wallTop))
+    die();
+  if (car.overlap(wallBottom))
+    die();
+
+  for (var i = 0; i < trafficGroup.length; i++)
+    if (trafficGroup[i].position.x < car.position.x - width / 0.5) {
+      trafficGroup[i].remove()
+    }
+  if (car.overlap(trafficGroup)) {
+    die();
+  }
+  trafficSpawn();
+
+  push();
+  textFont(mytupi);
+  textSize(35);
+  strokeWeight(2);
+  stroke(0);
+  fill(255, 255, 0);
+  text("SCORE: " + score, 30, 55);
+  pop();
+
+  car.debug = mouseIsPressed;
+  wallTop.debug = mouseIsPressed;
+  wallBottom.debug = mouseIsPressed;
 }
 
 function trafficSpawn() {
