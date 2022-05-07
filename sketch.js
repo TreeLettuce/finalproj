@@ -15,6 +15,7 @@ function preload() {
   mytupi = loadFont('font/mytupiBOLD.ttf');
   menu = loadImage('images/menu.png');
   selection = loadImage('images/selection.png');
+  loading = loadImage('images/loading001.png', 'loading002.png');
   ggscreen = loadImage('images/gg.png');
   movingRoad = loadImage('images/road.png')
   traffic01 = loadImage('images/traffic01.png');
@@ -60,6 +61,9 @@ function draw() {
     case 'selection':
       selectionScreen();
       break;
+    case 'loading':
+      loadingScreen();
+      break;
     case 'game1':
       gameStage1();
       break;
@@ -87,7 +91,7 @@ function keyReleased() {
     }
 } else if (gameState === 'title' || gameState === 'gameover' ){
 if (key === 'x' || key === 'X'){
-gameState = 'selection';
+  gameState = 'selection';
     }
 }
 }
@@ -107,6 +111,13 @@ function titleScreen() {
 function selectionScreen() {
   background(220);
   image(selection, 0, 0, 0, 0,);
+}
+
+function loadingScreen() {
+  background(220);
+  var loading = createSprite(0, 0, 0, 0)
+  loading.addAnimation('normal', 'images/loading001.png', 'loading002.png');
+
 }
 
 function gameStage1() {
