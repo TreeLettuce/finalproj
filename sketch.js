@@ -15,7 +15,7 @@ function preload() {
   mytupi = loadFont('font/mytupiBOLD.ttf');
   menu = loadImage('images/menu.png');
   selection = loadImage('images/selection.png');
-  loading = loadImage('images/loading001.png', 'loading002.png');
+  loading = loadAnimation('images/loading001.png', 'images/loading002.png');
   ggscreen = loadImage('images/gg.png');
   movingRoad = loadImage('images/road.png')
   traffic01 = loadImage('images/traffic01.png');
@@ -115,9 +115,7 @@ function selectionScreen() {
 
 function loadingScreen() {
   background(220);
-  var loading = createSprite(0, 0, 0, 0)
-  loading.addAnimation('normal', 'images/loading001.png', 'loading002.png');
-
+  image(loading, 0, 0, 0, 0);
 }
 
 function gameStage1() {
