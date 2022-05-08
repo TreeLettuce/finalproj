@@ -1,10 +1,4 @@
-# Final Project Timeline:
-**Week 1:** Create more functioning switching gamestates with placeholder assets. *Screens that will be added: Sprite Selection, Loading, Credits.*
-<br>
-**Week 2:** Create assets for new gamestate screens. *Assets that need to be made: New car sprite, loading screen animation, credits plate.*
-<br>
-**Week 3:** Finalize project. *Fix any persisting bugs and polish final look of game.*
-<br>
+
 
 # Reckless Driving Simulator
 **Concept:** <br>
@@ -15,15 +9,10 @@ Players will move and down a 5-lane freeway using keyboard controls to dodge onc
 
 *Game functions off JavaScript and was created using p5.js and the p5.play library.*
 
-**Timeline:**
-1. Create bare game, with input controls working
-3. Code in death when player veers too far off the road
-4. Create menu and game over screens
-5. Draw assets for sprites, menus, and background
-6. Randomize sprites that will serve as obstacles for the player
-7. Test game functionality and ensure game plays as intended
-8. Polish visuals
-9. Finish
-
-
-***ERROR IN GITHUB AND GITHUB DESKTOP CREATED ISSUES WITH PUSHING AND PULLING UPDATES TO REPOSITORY. NEW REPOSITORY HAD TO BE MADE, RESULTING IN EARLIEST VERSIONS OF CODE  BEING LOST.***
+# Final Project Timeline:
+**Week 1:** Create more functioning switching gamestates with placeholder assets. *Screens that will be added: Sprite Selection, Loading, Credits.*
+<br>
+**Week 2:** Create assets for new gamestate screens. *Assets that need to be made: New car sprite, loading screen animation, credits plate.*
+<br>
+**Week 3:** Finalize project. *Fix any persisting bugs and polish final look of game.*
+<br>
