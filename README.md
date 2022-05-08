@@ -1,9 +1,9 @@
 # Final Project Timeline:
-**Week 1:** Create more functioning switching gamestates with placeholder assets. Screens that will be added: Sprite Selection, Loading, Credits.
+**Week 1:** Create more functioning switching gamestates with placeholder assets. *Screens that will be added: Sprite Selection, Loading, Credits.*
 <br>
-**Week 2:** Create assets for new gamestate screens. Assets that need to be made: New car sprite, loading screen animation, credits plate.
+**Week 2:** Create assets for new gamestate screens. Assets that need to be made: *New car sprite, loading screen animation, credits plate.*
 <br>
-**Week 3:** Finalize project. Fix any persisting bugs and polish final look of game.
+**Week 3:** Finalize project. *Fix any persisting bugs and polish final look of game.*
 <br>
 
 # Reckless Driving Simulator
