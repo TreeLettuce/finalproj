@@ -1,3 +1,11 @@
+Final Project Timeline:
+Week 1: Create more functioning switching gamestates with placeholder assets. 
+        Screens that will be added: Sprite Selection, Loading, Credits.
+Week 2: Create assets for new gamestate screens. 
+        Assets that need to be made: New car sprite, loading screen animation, credits plate.
+Weel 3: Finalize project. 
+        Fix any persisting bugs and polish final look of game.
+
 # Reckless Driving Simulator
 **Concept:** <br>
 *Reckless Driving Simulator* is inspired my trips to and from school, where I've witnessed numerous dangerous and reckless drivers on the motorway. People drive like they own the road, weaving in and out of traffic to get to their destination as fast as possible with little regard for the safety of others. Turn signals and speed limits are out of the picture for these drivers. I always compared those drivers to playing video games; the objective is to get home as fast as possible, and the obstacles are other motor vehicles. It sounded to me like a simple but perfect game idea.
