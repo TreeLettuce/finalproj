@@ -8,7 +8,7 @@ var x1 = 0;
 var x2;
 var scrollSpeed = 30;
 let gameState = 'title';
-var bussin;
+var rolling;
 var loadingImage1
 var loadingImage2
 
@@ -18,10 +18,10 @@ function preload() {
   mytupi = loadFont('font/mytupiBOLD.ttf');
   menu = loadImage('images/menu.png');
   selection = loadImage('images/selection.png');
-  loadingImage1 = loadImage('images/loading001.png')
-  loadingImage2 = loadImage('images/loading002.png')
+  loadingImage1 = loadImage('images/loading001.png');
+  loadingImage2 = loadImage('images/loading002.png');
   ggscreen = loadImage('images/gg.png');
-  movingRoad = loadImage('images/road.png')
+  movingRoad = loadImage('images/road.png');
   traffic01 = loadImage('images/traffic01.png');
   traffic02 = loadImage('images/traffic02.png');
   traffic03 = loadImage('images/traffic03.png');
@@ -29,7 +29,8 @@ function preload() {
   traffic05 = loadImage('images/traffic05.png');
   traffic06 = loadImage('images/traffic06.png');
   traffic07 = loadImage('images/traffic07.png');
-  bussin = loadAnimation("images/loading001.png", "images/loading002.png")
+  rolling = loadAnimation("images/loading001.png", "images/loading002.png");
+  credits = loadImage('images/credits.png');
 }
 
 function setup() {
@@ -81,6 +82,9 @@ function draw() {
     case 'gameover':
       gameOver();
       break;
+    case 'credits':
+      credits();
+      break;
   }
 }
 
@@ -92,7 +96,7 @@ function keyReleased() {
       car.position.x = 680;
       car.position.y = 483;
       score = 0;
-      //value of time in miliseconds, change loading screen duration by changing value
+      //value of time in miliseconds
       setTimeout(switchToGame1, 2500)
     } else if (key === 'e' || key === 'E') {
       //game2
@@ -100,12 +104,16 @@ function keyReleased() {
       car.position.x = 680;
       car.position.y = 483;
       score = 0;
-      //value of time in miliseconds, change loading screen duration by changing value
+      //value of time in miliseconds
       setTimeout(switchToGame2, 2500)
     }
   } else if (gameState === 'title' || gameState === 'gameover') {
     if (key === 'x' || key === 'X') {
       gameState = 'selection';
+    }
+  } else if (gameState === 'gameover') {
+    if (key === 'c' || key === 'C') {
+      gameState = 'credits'
     }
   }
 }
@@ -134,7 +142,7 @@ function switchToLoading() {
 
 function loadingScreen() {
   background(220);
-  animation(bussin, 640, 480)
+  animation(rolling, 640, 480)
 }
 
 function switchToGame1() {
@@ -342,8 +350,22 @@ function gameOver() {
   stroke(0);
   strokeWeight(6);
   fill(255, 10, 10);
-  text("YOUR SCORE WAS " + score, width / 2, height / 1.5);
-  text('PRESS "X" TO RESTART', width / 2, height / 1.25);
+  text("YOUR SCORE WAS " + score, width / 2, height / 1.55);
+  text('PRESS "X" TO RESTART', width / 2, height / 1.3);
+  push();
+  textAlign(CENTER);
+  textSize(25);
+  textFont(mytupi);
+  stroke(50);
+  strokeWeight(5);
+  fill(145, 145, 145);
+  text('PRESS "C" TO VIEW CREDITS', width / 2, height / 1.12);
+  pop();
+}
+
+function credits() {
+  background(200);
+  image(credits, 0, 0, 0, 0);
 }
 
 //infinitely scrolling background
