@@ -83,7 +83,7 @@ function draw() {
       gameOver();
       break;
     case 'credits':
-      credits();
+      creditsScreen();
       break;
   }
 }
@@ -107,19 +107,25 @@ function keyReleased() {
       //value of time in miliseconds
       setTimeout(switchToGame2, 2500)
     }
-  } else if (gameState === 'title' || gameState === 'gameover') {
+  }
+  if (gameState === 'title' || gameState === 'gameover') {
     if (key === 'x' || key === 'X') {
       gameState = 'selection';
     }
-  } else if (gameState === 'gameover') {
+  }
+  if (gameState === 'gameover') {
     if (key === 'c' || key === 'C') {
       gameState = 'credits'
+    }
+  }
+  if (gameState === 'credits') {
+    if (key === 'x' || key === 'X') {
+      gameState = 'title'
     }
   }
 }
 
 function titleScreen() {
-
   background(220);
   image(menu, 0, 0, 0, 0);
   textAlign(CENTER);
@@ -363,8 +369,7 @@ function gameOver() {
   pop();
 }
 
-function credits() {
-  background(200);
+function creditsScreen() {
   image(credits, 0, 0, 0, 0);
 }
 
