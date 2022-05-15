@@ -45,6 +45,13 @@ function setup() {
   car.addAnimation('turnR', 'images/carR001.png', 'images/carR002.png');
   car.setCollider('rectangle', -513, -5, 225, 100);
 
+  //car sprite 2
+  car2 = createSprite(width / 2, height / 2);
+  car2.addAnimation('driving2', 'images/car011.png', 'images/car012.png');
+  car2.addAnimation('turnL2', 'images/carL011.png', 'images/carL012.png');
+  car2.addAnimation('turnR2', 'images/carR011.png', 'images/carR012.png');
+  car2.setCollider('rectangle', -513, -5, 225, 100);
+
   //invis top wall sprite
   wallTop = createSprite(0, 0, 1280, 70);
   wallTop.addAnimation('normal', 'images/inviswall01.png');
@@ -55,12 +62,12 @@ function setup() {
   wallBottom.addAnimation('normal', 'images/inviswall02.png');
   wallBottom.setCollider('rectangle', 640, 925, 1280, 70);
 
-  loadingAnimation = createSprite;
-
+  //  loadingAnimation = createSprite;
 
   trafficGroup = new Group();
   score = 0
 }
+
 
 function draw() {
   switch (gameState) {
@@ -88,24 +95,18 @@ function draw() {
   }
 }
 
-function keyReleased() {
+function keyPressed() {
   if (gameState === 'selection') {
     if (key === 'q' || key === 'Q') {
       // game1
       gameState = 'loading'
-      car.position.x = 680;
-      car.position.y = 483;
-      score = 0;
       //value of time in miliseconds
-      setTimeout(switchToGame1, 2500)
+      setTimeout(switchToGame1, 2200)
     } else if (key === 'e' || key === 'E') {
       //game2
       gameState = 'loading'
-      car.position.x = 680;
-      car.position.y = 483;
-      score = 0;
       //value of time in miliseconds
-      setTimeout(switchToGame2, 2500)
+      setTimeout(switchToGame2, 2200)
     }
   }
   if (gameState === 'title' || gameState === 'gameover') {
@@ -153,10 +154,20 @@ function loadingScreen() {
 
 function switchToGame1() {
   gameState = 'game1'
+  car.position.x = 680;
+  car.position.y = 483;
+  car2.position.x = 680;
+  car2.position.y = 483;
+  score = 0;
 }
 
 function switchToGame2() {
   gameState = 'game2'
+car.position.x = 680;
+car.position.y = 483;
+car2.position.x = 680;
+car2.position.y = 483;
+  score = 0;
 }
 
 function gameStage1() {
@@ -177,6 +188,11 @@ function gameStage1() {
   //draws all sprites
   drawSprites();
 
+  //removes car2
+  car2.visible = false;
+  car.visible = true;
+
+
   //side barrier death
   if (car.overlap(wallTop))
     die();
@@ -200,7 +216,6 @@ function gameStage1() {
   fill(255, 255, 0);
   text("SCORE: " + score, 30, 55);
   pop();
-
 }
 
 function gameStage2() {
@@ -209,29 +224,33 @@ function gameStage2() {
 
   //movement + turning animation
   if (keyDown('w')) {
-    car.position.y = car.position.y - 10.5;
-    car.changeAnimation('turnL');
+    car2.position.y = car2.position.y - 10.5;
+    car2.changeAnimation('turnL2');
   } else if (keyDown('s')) {
-    car.position.y = car.position.y + 10.5;
-    car.changeAnimation('turnR');
+    car2.position.y = car2.position.y + 10.5;
+    car2.changeAnimation('turnR2');
   } else {
-    car.changeAnimation('driving')
+    car2.changeAnimation('driving2')
   }
 
   //draws all sprites
   drawSprites();
 
+  //removes car
+  car.visible = false;
+  car2.visible = true;
+
   //side barrier death
-  if (car.overlap(wallTop))
+  if (car2.overlap(wallTop))
     die();
-  if (car.overlap(wallBottom))
+  if (car2.overlap(wallBottom))
     die();
 
   for (var i = 0; i < trafficGroup.length; i++)
-    if (trafficGroup[i].position.x < car.position.x - width / 0.5) {
+    if (trafficGroup[i].position.x < car2.position.x - width / 0.5) {
       trafficGroup[i].remove()
     }
-  if (car.overlap(trafficGroup)) {
+  if (car2.overlap(trafficGroup)) {
     die();
   }
   trafficSpawn();
@@ -244,10 +263,6 @@ function gameStage2() {
   fill(255, 255, 0);
   text("SCORE: " + score, 30, 55);
   pop();
-
-  car.debug = mouseIsPressed;
-  wallTop.debug = mouseIsPressed;
-  wallBottom.debug = mouseIsPressed;
 }
 
 function trafficSpawn() {
