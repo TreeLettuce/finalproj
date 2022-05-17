@@ -31,6 +31,15 @@ function preload() {
   traffic07 = loadImage('images/traffic07.png');
   rolling = loadAnimation("images/loading001.png", "images/loading002.png");
   credits = loadImage('images/credits.png');
+  select1 = loadSound('sounds/select01.mp3');
+  select2 = loadSound('sounds/select02.mp3');
+  selectMusic = loadSound('sounds/selectmusic.mp3');
+  whiteRev = loadSound('sounds/86rev.mp3');
+  redRev = loadSound('sounds/300rev.mp3');
+  gameMusic = loadSound('sounds/gamemusic.mp3');
+  trafficSound = loadSound('sounds/highwaysound.mp3')
+  tireSound = loadSound('sounds/tiresound.mp3');
+  crashSound = loadSound('sounds/crashsound.mp3');
 }
 
 function setup() {
@@ -99,11 +108,15 @@ function keyPressed() {
   if (gameState === 'selection') {
     if (key === 'q' || key === 'Q') {
       // game1
+      select2.play();
+      whiteRev.play();
       gameState = 'loading'
       //value of time in miliseconds
       setTimeout(switchToGame1, 2200)
     } else if (key === 'e' || key === 'E') {
       //game2
+      select2.play();
+      redRev.play();
       gameState = 'loading'
       //value of time in miliseconds
       setTimeout(switchToGame2, 2200)
@@ -111,22 +124,27 @@ function keyPressed() {
   }
   if (gameState === 'title' || gameState === 'gameover') {
     if (key === 'x' || key === 'X') {
+      select1.play();
+      selectMusic.play();
       gameState = 'selection';
     }
   }
   if (gameState === 'gameover') {
     if (key === 'c' || key === 'C') {
+      select1.play();
       gameState = 'credits'
     }
   }
   if (gameState === 'credits') {
     if (key === 'x' || key === 'X') {
+      select1.play();
       gameState = 'title'
     }
   }
 }
 
 function titleScreen() {
+  crashSound.stop();
   background(220);
   image(menu, 0, 0, 0, 0);
   textAlign(CENTER);
@@ -139,6 +157,8 @@ function titleScreen() {
 }
 
 function selectionScreen() {
+  trafficSound.stop();
+  crashSound.stop();
   background(220);
   image(selection, 0, 0, 0, 0, );
 }
@@ -148,12 +168,16 @@ function switchToLoading() {
 }
 
 function loadingScreen() {
+  selectMusic.stop();
   background(220);
   animation(rolling, 640, 480)
 }
 
 function switchToGame1() {
+  selectMusic.stop();
+  trafficSound.play();
   gameState = 'game1'
+  gameMusic.play();
   car.position.x = 680;
   car.position.y = 483;
   car2.position.x = 680;
@@ -162,11 +186,14 @@ function switchToGame1() {
 }
 
 function switchToGame2() {
+  selectMusic.stop();
+  trafficSound.play();
   gameState = 'game2'
-car.position.x = 680;
-car.position.y = 483;
-car2.position.x = 680;
-car2.position.y = 483;
+  gameMusic.play();
+  car.position.x = 680;
+  car.position.y = 483;
+  car2.position.x = 680;
+  car2.position.y = 483;
   score = 0;
 }
 
@@ -385,6 +412,8 @@ function gameOver() {
 }
 
 function creditsScreen() {
+  trafficSound.stop();
+  crashSound.stop();
   image(credits, 0, 0, 0, 0);
 }
 
@@ -405,5 +434,8 @@ function roadMoving() {
 }
 
 function die() {
+  gameMusic.stop();
+  trafficSound.stop();
+  crashSound.play();
   gameState = 'gameover'
 }
