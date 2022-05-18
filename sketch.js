@@ -41,7 +41,6 @@ function preload() {
   redRev = loadSound('sounds/300rev.mp3');
   gameMusic = loadSound('sounds/gamemusic.mp3');
   trafficSound = loadSound('sounds/highwaysound.mp3')
-  tireSound = loadSound('sounds/tiresound.mp3');
   crashSound = loadSound('sounds/crashsound.mp3');
 }
 
