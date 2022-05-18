@@ -20,6 +20,8 @@ function preload() {
   selection = loadImage('images/selection.png');
   loadingImage1 = loadImage('images/loading001.png');
   loadingImage2 = loadImage('images/loading002.png');
+  loadingImage3 = loadImage('images/loading003.png');
+  loadingImage4 = loadImage('images/loading004.png');
   ggscreen = loadImage('images/gg.png');
   movingRoad = loadImage('images/road.png');
   traffic01 = loadImage('images/traffic01.png');
@@ -29,7 +31,8 @@ function preload() {
   traffic05 = loadImage('images/traffic05.png');
   traffic06 = loadImage('images/traffic06.png');
   traffic07 = loadImage('images/traffic07.png');
-  rolling = loadAnimation("images/loading001.png", "images/loading002.png");
+  rolling = loadAnimation('images/loading001.png', 'images/loading002.png');
+  rolling2 = loadAnimation('images/loading003.png', 'images/loading004.png')
   credits = loadImage('images/credits.png');
   select1 = loadSound('sounds/select01.mp3');
   select2 = loadSound('sounds/select02.mp3');
@@ -89,6 +92,9 @@ function draw() {
     case 'loading':
       loadingScreen();
       break;
+    case 'loading2':
+      loadingScreen2();
+      break;
     case 'game1':
       gameStage1();
       break;
@@ -117,7 +123,7 @@ function keyPressed() {
       //game2
       select2.play();
       redRev.play();
-      gameState = 'loading'
+      gameState = 'loading2'
       //value of time in miliseconds
       setTimeout(switchToGame2, 2200)
     }
@@ -170,7 +176,13 @@ function switchToLoading() {
 function loadingScreen() {
   selectMusic.stop();
   background(220);
-  animation(rolling, 640, 480)
+  animation(rolling, 640, 480);
+}
+
+function loadingScreen2() {
+  selectMusic.stop();
+  background(220);
+  animation(rolling2, 640, 480);
 }
 
 function switchToGame1() {
