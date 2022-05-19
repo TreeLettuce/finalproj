@@ -14,7 +14,7 @@ canvas {
   position: absolute;
   text-align: center;
   padding: 0% 72%;
-  width: 105%
+  width: 100%
   margin: auto;
 }
 
@@ -22,7 +22,21 @@ canvas {
   position: absolute;
   text-align: center;
   padding: 0% 22.5%;
-  width: 105%
+  width: 100%
+  margin: auto;
+}
+
+.buttonContainer3{
+  position: relative;
+  text-align: center;
+  width: 100%
+  margin: auto;
+}
+
+.buttonContainer4{
+  position: relative;
+  text-align: center;
+  width: 100%
   margin: auto;
 }
 
