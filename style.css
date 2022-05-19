@@ -9,3 +9,26 @@ canvas {
   margin: auto;
   padding: 50px;
 }
+
+.buttonContainer{
+  position: absolute;
+  text-align: center;
+  padding: 0% 72%;
+  width: 105%
+  margin: auto;
+}
+
+.buttonContainer2{
+  position: absolute;
+  text-align: center;
+  padding: 0% 22.5%;
+  width: 105%
+  margin: auto;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
