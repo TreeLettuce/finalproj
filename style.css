@@ -13,9 +13,9 @@ canvas {
 .buttonContainer{
   position: absolute;
   text-align: center;
-  padding: 0% 72%;
-  width: 100%
-  margin: auto;
+  /* padding: 0% auto auto 72%; */
+  width: 100%;
+  margin-left: 23.75%;
 }
 
 .buttonContainer2{
@@ -29,6 +29,7 @@ canvas {
 .buttonContainer3{
   position: relative;
   text-align: center;
+  padding-top: 5%;
   width: 100%
   margin: auto;
 }
@@ -36,6 +37,7 @@ canvas {
 .buttonContainer4{
   position: relative;
   text-align: center;
+  padding-top: 5%;
   width: 100%
   margin: auto;
 }
@@ -45,4 +47,7 @@ canvas {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+.bottomButtons{
+  padding-top: 5%;
 }
