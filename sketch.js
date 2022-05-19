@@ -9,8 +9,8 @@ var x2;
 var scrollSpeed = 30;
 let gameState = 'title';
 var rolling;
-var loadingImage1
-var loadingImage2
+var loadingImage1;
+var loadingImage2;
 
 //hello
 
@@ -24,6 +24,7 @@ function preload() {
   loadingImage4 = loadImage('images/loading004.png');
   ggscreen = loadImage('images/gg.png');
   movingRoad = loadImage('images/road.png');
+  bird = loadImage('images/bird.png');
   traffic01 = loadImage('images/traffic01.png');
   traffic02 = loadImage('images/traffic02.png');
   traffic03 = loadImage('images/traffic03.png');
@@ -77,6 +78,7 @@ function setup() {
 
   trafficGroup = new Group();
   score = 0
+
 }
 
 
@@ -165,7 +167,7 @@ function selectionScreen() {
   trafficSound.stop();
   crashSound.stop();
   background(220);
-  image(selection, 0, 0, 0, 0, );
+  image(selection, 0, 0, 0, 0);
 }
 
 function switchToLoading() {
